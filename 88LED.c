@@ -28,15 +28,15 @@ void hc595sendbyte(u8 dat)
 	rclk = 0;
 }
 void main()
-{		
-	
-	
-	
-	
-	
-	
-	
-	
+{
+	for (int i = 0; i < 8;i++)
+	{
+		P0 = led_row[i];
+		hc595sendbyte(led_row[i]);
+		delay(100);					//越大人眼越容易察觉,亮度也越亮
+		hc595sendbyte(0x00);		//消影
+	}
+
 	//点亮第一行第一列的LED
 	//hc595sendbyte(0x80) //1000 0000第一列的第一个位高电平
 	//P0 = 0x7f; 0111 1111//
